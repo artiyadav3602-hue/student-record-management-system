@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Student</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #e0e7ff;
+            text-align: center;
+            padding: 50px;
+        }
+        .box {
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            max-width: 450px;
+            margin: auto;
+        }
+        h1 { color: #4338ca; }
+        input {
+            padding: 12px;
+            width: 85%;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+        }
+        button {
+            background: #4f46e5;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+        a {
+            display: block;
+            margin-top: 20px;
+            color: #4338ca;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>Search Student Record</h1>
+
+        <form method="POST">
+            <input type="text" name="roll"
+                   placeholder="Enter Roll Number" required>
+            <br><br>
+            <button type="submit">Search</button>
+        </form>
+
+        {% if student %}
+            <h2>Student Found</h2>
+            <p>Name: {{ student.name }}</p>
+            <p>Roll Number: {{ student.roll }}</p>
+            <p>Course: {{ student.course }}</p>
+            <p>Email: {{ student.email }}</p>
+        {% elif request.method == "POST" %}
+            <p>Student not found!</p>
+        {% endif %}
+
+        <a href="/">Back to Home</a>
+    </div>
+</body>
+</html>
