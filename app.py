@@ -123,17 +123,7 @@ def add_student():
 # VIEW STUDENTS
 @app.route("/view")
 def view_students():
-    con = sqlite3.connect("students.db")
-    con.row_factory = sqlite3.Row
-
-    students = con.execute(
-        "SELECT * FROM students"
-    ).fetchall()
-
-    con.close()
-
-    return render_template("view.html", students=students)
-
+    return "Access Denied", 403
 
 # SEARCH STUDENT
 @app.route("/search", methods=["GET", "POST"])
